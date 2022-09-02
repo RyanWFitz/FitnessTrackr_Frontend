@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, Routes, Route } from "react-router-dom";
 import { Home, Account } from "./index";
+import "../styles.css";
 
 const App = () => {
   const [user, setUser] = useState(false);
