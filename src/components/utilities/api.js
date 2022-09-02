@@ -1,12 +1,12 @@
-//DO WE OUT OUR LOCAL HOST HERE
-const FITNESSTRACK = 
+//DO WE OUT OUR LOCAL HOST HERE ?
+const FITNESSTRACK = " ? "
 
 export const apiCall = async (url, method = 'GET', token, body) => {
     let data = false;
     try {
         const response = await fetch(
             FITNESSTRACK + url,
-            setToekn(getFetchOptions(method, bpdy), token)
+            setToken(getFetchOptions(method, bpdy), token)
         );
         data = await response.json();
 
@@ -36,8 +36,8 @@ const setToken = (body, token) => {
 }
 
 
-export const fetchPost = async(token) => {
-   const data = await apiCall('/posts', 'GET', token)
+export const fetchActivities = async(token) => {
+   const data = await apiCall('/activities', 'GET', token)
    if (!data || !data.data) {
        return []
    }
