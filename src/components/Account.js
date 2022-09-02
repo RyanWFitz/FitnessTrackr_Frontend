@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { apiCall, loginOrRegister } from "../utilities/api";
-
-// Got the frontend of the account login section working, now we need to incorporate the api calls to be able to log in a user properly.
-
-// For reference, see class 30 about 25 minutes into the class.
+import { loginOrRegister } from "../utilities/api";
+import { UserProfile } from "./index";
 
 const Account = ({ user, setUser, token, setToken }) => {
   const [username, setUsername] = useState("");
@@ -13,31 +10,37 @@ const Account = ({ user, setUser, token, setToken }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    let returnedToken;
+    let response;
 
     if (isRegistering) {
-      returnedToken = await loginOrRegister("register", username, password);
-      console.log("registering", username, password);
+      response = await loginOrRegister("register", username, password);
     } else {
-      returnedToken = await loginOrRegister("login", username, password);
-      console.log("logged in", username, password);
+      response = await loginOrRegister("login", username, password);
     }
 
-    setToken(returnedToken);
+    localStorage.setItem("token", response.token);
+    localStorage.setItem("user", response.user);
+
+    setToken(response.token);
+    setUser(response.user);
+
+    setUsername("");
+    setPassword("");
   };
 
   const toggleRegistration = () => {
-    console.log("toggling", isRegistering);
     setIsRegistering(!isRegistering);
   };
 
   return (
     <>
       {user && token ? (
-        <>
-          <h1>Profile</h1>
-          <p>{user.username}</p>
-        </>
+        <UserProfile
+          user={user}
+          setUser={setUser}
+          token={token}
+          setToken={setToken}
+        />
       ) : (
         <>
           <h1>{isRegistering ? "Registration" : "Login"}</h1>

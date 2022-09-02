@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, Routes, Route } from "react-router-dom";
 import { Home, Account } from "./index";
 import "../styles.css";
@@ -9,6 +9,19 @@ const App = () => {
   const [activities, setActivities] = useState([]);
   const [routines, setRoutines] = useState([]);
   const [routineActivities, setRoutineActivities] = useState([]);
+
+  useEffect(() => {
+    console.log("first useEffect in App");
+    try {
+      const savedUser = localStorage.getItem("user");
+      const savedToken = localStorage.getItem("token");
+
+      setUser(savedUser);
+      setToken(savedToken);
+    } catch (error) {
+      console.error();
+    }
+  }, []);
 
   return (
     <main>
