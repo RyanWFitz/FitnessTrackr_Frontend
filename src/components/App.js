@@ -36,12 +36,15 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
-          user={user}
-          setUser={setUser}
-          token={token}
-          setToken={setToken}
           path="/account"
-          element={<Account />}
+          element={
+            <Account
+              user={user}
+              setUser={setUser}
+              token={token}
+              setToken={setToken}
+            />
+          }
         />
       </Routes>
     </main>

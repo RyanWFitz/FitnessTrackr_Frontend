@@ -16,11 +16,14 @@ const Account = ({ user, setUser, token, setToken }) => {
     let returnedToken;
 
     if (isRegistering) {
+      returnedToken = await loginOrRegister("register", username, password);
       console.log("registering", username, password);
     } else {
       returnedToken = await loginOrRegister("login", username, password);
       console.log("logged in", username, password);
     }
+
+    setToken(returnedToken);
   };
 
   const toggleRegistration = () => {
