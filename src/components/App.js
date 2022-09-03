@@ -105,9 +105,15 @@ const App = () => {
               setActivities={setActivities}
             />
           }
+<<<<<<< HEAD
           />
 
           <Route
+=======
+        />
+
+        <Route
+>>>>>>> 37e1d9cacb2137440caf073e568ff035d2863bd9
           path="/myRoutines"
           element={
             <MyRoutines
