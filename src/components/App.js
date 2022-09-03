@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Routes, Route } from "react-router-dom";
-import { Home, Account } from "./index";
+import { Home, Account, Activities, MyRoutines, routines } from "./index";
 import "../styles.css";
+import Routines from "./Routines";
 
 const App = () => {
   const [user, setUser] = useState(false);
@@ -9,6 +10,9 @@ const App = () => {
   const [activities, setActivities] = useState([]);
   const [routines, setRoutines] = useState([]);
   const [routineActivities, setRoutineActivities] = useState([]);
+  const [name, setName] = useState("");
+  const [goal, setGoal] = useState("");
+  const [creatorUsername, setCreatorUsername] = useState({});
 
   useEffect(() => {
     console.log("first useEffect in App");
@@ -31,6 +35,7 @@ const App = () => {
           to="/account"
           style={(isActive) => ({
             color: isActive ? "blue" : "red",
+            
           })}
         >
           Account
@@ -40,14 +45,46 @@ const App = () => {
           to="/"
           style={(isActive) => ({
             color: isActive ? "blue" : "red",
+
           })}
         >
           Home
         </NavLink>
+
+        <NavLink
+          to="/activities"
+          style={(isActive) => ({
+            color: isActive ? "blue" : "red",
+          })}
+        >
+          Activities
+        </NavLink>
+        
+        <NavLink
+          to="/myRoutines"
+          style={(isActive) => ({
+            color: isActive ? "blue" : "red",
+          })}
+        >
+          My Routines 
+        </NavLink>
+
+        <NavLink
+          to="/routines"
+          style={(isActive) => ({
+            color: isActive ? "blue" : "red",
+          })}
+        >
+          Routines 
+        </NavLink>
+
       </nav>
+
+
 
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route
           path="/account"
           element={
@@ -59,6 +96,37 @@ const App = () => {
             />
           }
         />
+
+        <Route
+          path="/activities"
+          element={
+            <Activities
+              activities={activities}
+              setActivities={setActivities}
+            />
+          }
+
+          Route
+          path="/myRoutines"
+          element={
+            <MyRoutines
+            />
+          }
+        />
+
+        <Route
+          path="/routines"
+          element={
+            <Routines
+              routines={routines}
+              setRoutines={setRoutines}
+              name={setName}
+              goal={setGoal}
+              creatorUsername={setCreatorUsername}
+            />
+          }
+          />
+
       </Routes>
     </main>
   );
