@@ -1,6 +1,7 @@
 export const BASE_URL = "http://localhost:3500/api";
 //export const BASE_URL = " https://fitnesstrac-kr.herokuapp.com/api";
 
+
 export const apiCall = async (path, method, token, body) => {
   console.log("in apiCall");
   try {
@@ -18,7 +19,7 @@ export const apiCall = async (path, method, token, body) => {
 
     console.log("options", options);
     const response = await fetch(`${BASE_URL}/${path}`, options);
-    console.log("response", response);
+    //console.log("response", response);
     const data = await response.json();
     console.log("data", data);
 
