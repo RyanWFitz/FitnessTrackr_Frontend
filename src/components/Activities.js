@@ -1,56 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Activities} from ".";
+import { apiCall } from "../utilities/api";
 
+
+/*   TO DO
+    ~UNREGISTERED
+        - see list of all activties
+    ~REGISTERED
+        - be able to create new activities
+        - be shown an error if the activty already exists
+
+*/
 const activities = () => {
+  
+ const getActivities = async () => {
+    const fetched = await apiCall('/activites', 'GET', token)
+    setActivites()
+ }
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
 
+    useEffect(() => {
+        getActivities();
+    })
 
-
-    return (
+    return <>
         <div>
-            Activities
+            <h1> Activities </h1>
         </div>
-    )
+
+    </>
+       
 }
 
 export default activities;
 
-
-//     return !activities(
-//         <main className="activitiesList">
-//           <div>Sorry, no activities have been created. Check back later.</div>
-//         </main>
-//       ) : (
-//         <main className="activitiesList">
-//           <div>
-//             {token ? (
-//               <NavLink
-//                 key="2"
-//                 to="/addactivity"
-//                 className="createActivityButtonforall"
-//               >
-//                 Create New Activity
-//               </NavLink>
-//             ) : null}
-//           </div>
-//           {activities.map((activity) => {
-//     return (
-//         <div>
-//             Activites
-//         </div>
-
-//         <section className="indActivity" key={activity.id}>
-//             <p> ActivityId #{activity.id}</p>
-//             <h4>{activity.name}</h4>
-//             <p>{activity.description</p>
-//             <p>
-//                 {token ? (
-//                     <NavLink
-//                     key="1"
-//                     to={}>
-//                         Edit the Activity
-//                     </NavLink>
-
-//                 ) : null}
-//             </p>
-//         </section>
-//     );
