@@ -76,7 +76,10 @@ const App = () => {
         />
         <Route path="/myroutines" element={<MyRoutines/>} />
         <Route path="/routines" element={<Routines/>} />
-        <Route path="/activities" element={<Activities/>} />
+        <Route path="/activities" element={
+        <Activities
+        activities={activities}
+        setActivities={setActivities}/>}/>
     
       </Routes>
     </main>

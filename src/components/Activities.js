@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Activities} from ".";
+import { Activities } from ".";
 import { apiCall } from "../utilities/api";
 
 
@@ -13,13 +13,13 @@ import { apiCall } from "../utilities/api";
 */
 const activities = ({activities, setActivities, user, token}) => {
   
- const getActivities = async () => {
-    const fetched = await apiCall('/activities', 'GET', token)
-    setActivities(fetched.data.activities)
-    console.log(fetched.data.activities)
- }
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
+    const getActivities = async () => {
+        const fetched = await apiCall('/activities', 'GET', null)
+        setActivities(fetched)
+        console.log("activities constant", activities)
+    }
+    // const [name, setName] = useState('');
+    // const [description, setDescription] = useState('');
 
     useEffect(() => {
         getActivities();
@@ -30,11 +30,7 @@ const activities = ({activities, setActivities, user, token}) => {
             <h1> Activities </h1>
         </div>
         <ul className="activitiesBody">
-            {/* <li className="indActivities" key={activites.id}>
-                <div> Activity ID: {activities.data.id}</div>
-                <div> Activity: {activities.data.name}</div>
-                <div> Description: {activities.data.description}</div>
-            </li> */}
+        
         </ul>
 
     </>
@@ -43,3 +39,11 @@ const activities = ({activities, setActivities, user, token}) => {
 
 export default activities;
 
+
+
+
+ {/* <li className="indActivities" key={activites.id}>
+                <div> Activity ID: {activities.data.id}</div>
+                <div> Activity: {activities.data.name}</div>
+                <div> Description: {activities.data.description}</div>
+            </li> */}
