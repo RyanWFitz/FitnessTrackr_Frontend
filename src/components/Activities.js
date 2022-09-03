@@ -11,11 +11,11 @@ import { apiCall } from "../utilities/api";
         - be shown an error if the activty already exists
 
 */
-const activities = ({activities, setActivites, user, token}) => {
+const activities = ({activities, setActivities, user, token}) => {
   
  const getActivities = async () => {
-    const fetched = await apiCall('/activites', 'GET', token)
-    setActivites(fetched.data.activities)
+    const fetched = await apiCall('/activities', 'GET', token)
+    setActivities(fetched.data.activities)
     console.log(fetched.data.activities)
  }
     const [name, setName] = useState('');
@@ -30,11 +30,11 @@ const activities = ({activities, setActivites, user, token}) => {
             <h1> Activities </h1>
         </div>
         <ul className="activitiesBody">
-            <li className="indActivities" key={activites.id}>
-                <div> Activity ID: {activities.id}</div>
-                <div> Activity: {activities.name}</div>
-                <div> Description: {activities.description}</div>
-            </li>
+            {/* <li className="indActivities" key={activites.id}>
+                <div> Activity ID: {activities.data.id}</div>
+                <div> Activity: {activities.data.name}</div>
+                <div> Description: {activities.data.description}</div>
+            </li> */}
         </ul>
 
     </>
