@@ -105,8 +105,9 @@ const App = () => {
               setActivities={setActivities}
             />
           }
+          />
 
-          Route
+          <Route
           path="/myRoutines"
           element={
             <MyRoutines

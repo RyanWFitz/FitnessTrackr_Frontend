@@ -41,3 +41,10 @@ export const loginOrRegister = async (path, username, password) => {
   console.log("response", response, response.token);
   return response;
 };
+
+export const apiRoutines = async (path) => {
+  console.log("in the routines api call");
+  const response = await apiCall(`routines`, "GET", null);
+  console.log("response", response)
+  return response;
+}

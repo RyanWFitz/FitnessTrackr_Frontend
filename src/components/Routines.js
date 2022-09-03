@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { apiCall, loginOrRegister } from "../utilities/api";
+import React, { useState, useEffect } from "react";
+import { apiCall, loginOrRegister, apiRoutines } from "../utilities/api";
 
 
 const Routines = () => {
@@ -8,6 +8,20 @@ const Routines = () => {
     const [goal, setGoal] = useState('');
     const [creatorUsername, setCreatorUsername] = useState({});
 
+    const displayRoutines = async () => {
+        const routines = await apiRoutines();
+        setRoutines(routines)
+    }
+    
+    useEffect(() => {
+        displayRoutines();   
+    }, []);
+
+
+    
 }
 
 export default Routines;
+
+
+
