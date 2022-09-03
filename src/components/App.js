@@ -51,12 +51,12 @@ const App = () => {
         </NavLink>
 
         <NavLink
-          to="/activites"
+          to="/activities"
           style={(isActive) => ({
             color: isActive ? "blue" : "red",
           })}
         >
-          Activites
+          Activities
         </NavLink>
         
       </nav>
@@ -76,7 +76,7 @@ const App = () => {
         />
         <Route path="/myroutines" element={<MyRoutines/>} />
         <Route path="/routines" element={<Routines/>} />
-        <Route path="/activties" element={<Activities/>} />
+        <Route path="/activities" element={<Activities/>} />
     
       </Routes>
     </main>
