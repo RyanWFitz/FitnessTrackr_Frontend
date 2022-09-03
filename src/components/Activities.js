@@ -29,9 +29,16 @@ const activities = ({activities, setActivities, user, token}) => {
         <div>
             <h1> Activities </h1>
         </div>
-        <ul className="activitiesBody">
-        
-        </ul>
+        <div>
+            {activities.map( activity => {
+                return(
+                    <ul key={activity.id}>
+                        <li> Activity : {activity.name}</li>
+                        <li> Description : {activity.description}</li>
+                    </ul>
+                )
+            })}
+        </div>
 
     </>
        
@@ -40,10 +47,3 @@ const activities = ({activities, setActivities, user, token}) => {
 export default activities;
 
 
-
-
- {/* <li className="indActivities" key={activites.id}>
-                <div> Activity ID: {activities.data.id}</div>
-                <div> Activity: {activities.data.name}</div>
-                <div> Description: {activities.data.description}</div>
-            </li> */}
