@@ -1,6 +1,5 @@
 export const BASE_URL = "http://localhost:3500/api";
 //export const BASE_URL = " https://fitnesstrac-kr.herokuapp.com/api";
-//should be the port that we run our sever on??
 
 export const apiCall = async (path, method, token, body) => {
   console.log("in apiCall");
@@ -40,5 +39,5 @@ export const loginOrRegister = async (path, username, password) => {
     password,
   });
   console.log("response", response, response.token);
-  return response.token;
+  return response;
 };
