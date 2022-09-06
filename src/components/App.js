@@ -59,7 +59,8 @@ const App = () => {
         >
           Activities
         </NavLink>
-        
+
+        { user && token &&
         <NavLink
           to="/myRoutines"
           style={(isActive) => ({
@@ -68,6 +69,7 @@ const App = () => {
         >
           My Routines 
         </NavLink>
+        }
 
         <NavLink
           to="/routines"
@@ -108,7 +110,7 @@ const App = () => {
             />
           }
         />
-
+        {user && token &&
         <Route
           path="/myRoutines"
           element={
@@ -116,6 +118,7 @@ const App = () => {
             />
           }
         />
+        }
 
         <Route
           path="/routines"
