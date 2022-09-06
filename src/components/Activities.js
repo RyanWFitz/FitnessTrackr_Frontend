@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Activities} from ".";
 import { apiCall } from "../utilities/api";
 
 
@@ -23,6 +22,9 @@ const activities = ({activities, setActivities, user, token}) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const newActivity = await apiCall('activities', "POST", token, {name, description} )
+        if (!newActivity){
+            alert(`There Is Already An Activity With The Name "${name}".`)
+        }
         getActivities()
         setName('')
         setDescription('')
@@ -44,8 +46,8 @@ const activities = ({activities, setActivities, user, token}) => {
             {activities.map( activity => {
                 return(
                     <div key={activity.id}>
-                    <p>Name:{activity.name}</p>
-                    <p>Description:{activity.description}</p>
+                    <p>Name: {activity.name}</p>
+                    <p>Description: {activity.description}</p>
                 </div>
                 );
             })}
@@ -59,7 +61,7 @@ const activities = ({activities, setActivities, user, token}) => {
                 className="input-text"
                 onChange={(e)=> setName(e.target.value)}
                 type='text' name= 'activityName'
-                placeholder="Required"
+                placeholder="Activity Name Required"
                 value={name}
                 required
                 />
@@ -69,7 +71,7 @@ const activities = ({activities, setActivities, user, token}) => {
                 className="input-text"
                 onChange={(e) => setDescription(e.target.value)}
                 type='text' name='itemDescription'
-                placeholder="Required"
+                placeholder="Activity Description Required"
                 value={description}
                 required
                 />
