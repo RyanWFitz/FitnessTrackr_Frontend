@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { loginOrRegister } from "../utilities/api";
 import { UserProfile } from "./index";
-// add allerts for issues logging In
+// add alerts for issues logging In
 const Account = ({ user, setUser, token, setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +19,7 @@ const Account = ({ user, setUser, token, setToken }) => {
     }
 
     localStorage.setItem("token", response.token);
-    localStorage.setItem("user", response.user);
+    localStorage.setItem("user", JSON.stringify(response.user));
 
     setToken(response.token);
     setUser(response.user);

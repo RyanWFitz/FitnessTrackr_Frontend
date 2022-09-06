@@ -17,7 +17,7 @@ const App = () => {
   useEffect(() => {
     console.log("first useEffect in App");
     try {
-      const savedUser = localStorage.getItem("user");
+      const savedUser = JSON.parse(localStorage.getItem("user"));
       const savedToken = localStorage.getItem("token");
 
       setUser(savedUser);
@@ -35,7 +35,6 @@ const App = () => {
           to="/account"
           style={(isActive) => ({
             color: isActive ? "blue" : "red",
-            
           })}
         >
           Account
@@ -45,7 +44,6 @@ const App = () => {
           to="/"
           style={(isActive) => ({
             color: isActive ? "blue" : "red",
-
           })}
         >
           Home
@@ -60,16 +58,16 @@ const App = () => {
           Activities
         </NavLink>
 
-        { user && token &&
-        <NavLink
-          to={`/${user.username}/routines`}
-          style={(isActive) => ({
-            color: isActive ? "blue" : "red",
-          })}
-        >
-          My Routines 
-        </NavLink>
-        }
+        {user && token && (
+          <NavLink
+            to={`/${user.username}/routines`}
+            style={(isActive) => ({
+              color: isActive ? "blue" : "red",
+            })}
+          >
+            My Routines
+          </NavLink>
+        )}
 
         <NavLink
           to="/routines"
@@ -77,12 +75,9 @@ const App = () => {
             color: isActive ? "blue" : "red",
           })}
         >
-          Routines 
+          Routines
         </NavLink>
-
       </nav>
-
-
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -91,10 +86,10 @@ const App = () => {
           path="/account"
           element={
             <Account
-              user = {user}
-              setUser = {setUser}
-              token = {token}
-              setToken = {setToken}
+              user={user}
+              setUser={setUser}
+              token={token}
+              setToken={setToken}
             />
           }
         />
@@ -103,40 +98,33 @@ const App = () => {
           path="/activities"
           element={
             <Activities
-              activities = {activities}
-              setActivities = {setActivities}
-              user = {user}
-              token = {token}
+              activities={activities}
+              setActivities={setActivities}
+              user={user}
+              token={token}
             />
           }
         />
-        
-        {user && token &&
-        <Route
-          path={`/${user.username}/routines`}
-          element={
-            <MyRoutines
-            user = {user}
-            token = {token}
 
-            />
-          }
-        />
-        }
+        {user && token && (
+          <Route
+            path={`/${user.username}/routines`}
+            element={<MyRoutines user={user} token={token} />}
+          />
+        )}
 
         <Route
           path="/routines"
           element={
             <Routines
-              routines = {routines}
-              setRoutines = {setRoutines}
-              name = {setName}
-              goal = {setGoal}
-              creatorUsername = {setCreatorUsername}
+              routines={routines}
+              setRoutines={setRoutines}
+              name={setName}
+              goal={setGoal}
+              creatorUsername={setCreatorUsername}
             />
           }
-          />
-
+        />
       </Routes>
     </main>
   );
