@@ -89,10 +89,10 @@ const App = () => {
           path="/account"
           element={
             <Account
-              user={user}
-              setUser={setUser}
-              token={token}
-              setToken={setToken}
+              user = {user}
+              setUser = {setUser}
+              token = {token}
+              setToken = {setToken}
             />
           }
         />
@@ -101,8 +101,10 @@ const App = () => {
           path="/activities"
           element={
             <Activities
-              activities={activities}
-              setActivities={setActivities}
+              activities = {activities}
+              setActivities = {setActivities}
+              user = {user}
+              token = {token}
             />
           }
         />
@@ -119,11 +121,11 @@ const App = () => {
           path="/routines"
           element={
             <Routines
-              routines={routines}
-              setRoutines={setRoutines}
-              name={setName}
-              goal={setGoal}
-              creatorUsername={setCreatorUsername}
+              routines = {routines}
+              setRoutines = {setRoutines}
+              name = {setName}
+              goal = {setGoal}
+              creatorUsername = {setCreatorUsername}
             />
           }
           />
