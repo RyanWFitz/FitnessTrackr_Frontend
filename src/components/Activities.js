@@ -18,7 +18,6 @@ const activities = ({activities, setActivities, user, token}) => {
     const getActivities = async () => {
         const fetched = await apiCall('/activities', 'GET', null)
         setActivities(fetched)
-    // console.log("activities constant", activities)
     }
 
     const handleSubmit = async (e) => {
@@ -52,13 +51,8 @@ const activities = ({activities, setActivities, user, token}) => {
             })}
         </div>
 
-    {/* 
-        create a handle submit function *
-        call the createActivity api *
-        form needs to have the NAME and DESCRIPTION *
-        show an error if the activity exists, check for the NAME*/}
+  
         {user && token && (
-            // add onSubmit for the function
             <form className="item-submit" onSubmit={(e) => {handleSubmit(e)}}>
                 <div>Create Activity</div>
                 <input
