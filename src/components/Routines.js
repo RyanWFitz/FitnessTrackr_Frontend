@@ -9,7 +9,7 @@ import { apiCall } from "../utilities/api";
 // A list of activities for the routine, including their name, description, and duration and/or count
 
 // just need to use the public routines endpoint, it doesn't need to be in a utility file
-const Routines =({user, token, routines, setRoutines, routineActivities, setRoutineActivities}) => {
+const Routines =({ routines, setRoutines, }) => {
 
     const getRoutines = async () => {    
         const fetched = await apiCall('/routines', 'GET', null)
@@ -17,10 +17,6 @@ const Routines =({user, token, routines, setRoutines, routineActivities, setRout
     console.log("routines constant", routines);
 }
 
-    const [ name, setName ] = useState('');
-    const [ goal, setGoal ] = useState('');
-    const [ isPublic, setIsPublic ] = useState(false);
-    const [ creatorName, setCreatorName ] = useState('');
 
     useEffect(()=>{
         getRoutines();

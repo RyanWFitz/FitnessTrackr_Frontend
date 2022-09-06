@@ -62,7 +62,7 @@ const App = () => {
 
         { user && token &&
         <NavLink
-          to="/myRoutines"
+          to={`/${user.username}/routines`}
           style={(isActive) => ({
             color: isActive ? "blue" : "red",
           })}
@@ -110,11 +110,15 @@ const App = () => {
             />
           }
         />
+        
         {user && token &&
         <Route
-          path="/myRoutines"
+          path={`/${user.username}/routines`}
           element={
             <MyRoutines
+            user = {user}
+            token = {token}
+
             />
           }
         />
