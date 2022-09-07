@@ -15,7 +15,6 @@ const App = () => {
   const [creatorUsername, setCreatorUsername] = useState({});
 
   useEffect(() => {
-    console.log("first useEffect in App");
     try {
       const savedUser = JSON.parse(localStorage.getItem("user"));
       const savedToken = localStorage.getItem("token");
