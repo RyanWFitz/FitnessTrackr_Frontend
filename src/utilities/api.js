@@ -1,4 +1,4 @@
-export const BASE_URL = "https://arcane-basin-38571.herokuapp.com/api";
+export const BASE_URL = "https://glacial-bastion-47834.herokuapp.com/api";
 //export const BASE_URL = " https://fitnesstrac-kr.herokuapp.com/api";
 
 export const apiCall = async (path, method, token, body) => {
